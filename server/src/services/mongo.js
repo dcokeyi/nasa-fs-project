@@ -1,5 +1,4 @@
-const dotenv = require('dotenv');
-dotenv.config()
+const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
 
 mongoose.connection.once('open', () => {
@@ -10,7 +9,7 @@ mongoose.connection.on('error', (err) => {
     console.error(err)
 })
 
-const mongo_URL = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@nasa-project.my2ox9h.mongodb.net/nasa?retryWrites=true&w=majority`
+const mongo_URL = process.env.mongo_URL;
 
 async function mongoConnect() {
     await mongoose.connect(mongo_URL);

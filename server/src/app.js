@@ -3,8 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan')
 
-const planetsRouter = require('./routes/planets/planets.router')
-const launchesRouter = require('./routes/launches/launches.router')
+const api = require('./routes/api')
 
 const app = express();
 
@@ -19,9 +18,8 @@ app.use(express.json());
 // Load the build file for the client
 app.use(express.static(path.join(__dirname, '..', 'public')))
 
-// Use router
-app.use('/planets', planetsRouter);
-app.use('/launches', launchesRouter);
+// Use router for versioned api
+app.use('/v1', api)
 
 // Load the client so that the homepage will the localhost:5000 route.
 app.get('/*', (req, res) => {

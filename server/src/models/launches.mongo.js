@@ -20,7 +20,6 @@ const launchesSchema = new mongoose.Schema({
     target: {
         type: String,
         ref: 'Planet',
-        required: true
     },
     customer: [String],
     upcoming: {
